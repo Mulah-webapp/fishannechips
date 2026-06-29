@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers config — deploys this folder as a static site.
+  "name": "fishannechips",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./"
+  }
+}
