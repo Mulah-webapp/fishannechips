@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FishAnneChips — Women's Golf &amp; Fly Fishing</title>
-  <meta name="description" content="FishAnneChips — women's golf and fly fishing. New finds, curated vintage, and hand-picked gear." />
+  <title>Fly Fishing — FishAnneChips</title>
+  <meta name="description" content="Women's fly fishing — new apparel, pre-owned finds, and gear (new &amp; vintage) from FishAnneChips." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -15,74 +15,66 @@
     <a class="brand" href="index.html"><span class="brand-name">FishAnneChips</span></a>
     <nav class="nav-links">
       <a href="golf.html">Golf</a>
-      <a href="fishing.html">Fly Fishing</a>
-      <a href="#about">About</a>
+      <a href="fishing.html" class="is-active">Fly Fishing</a>
+      <a href="index.html#about">About</a>
       <a class="btn btn-ghost btn-small" href="#" data-placeholder>Shop on eBay</a>
     </nav>
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- PAGE HEADER -->
     <section class="hero store-hero">
       <div class="hero-block">
-        <p class="eyebrow">FishAnneChips</p>
-        <h1>Women's Golf &amp; <em>Fly Fishing</em></h1>
+        <p class="eyebrow">FishAnneChips · Fly Fishing</p>
+        <h1>Fly Fishing</h1>
         <p class="lede">
-          A curated mix of new finds, one-of-a-kind vintage pieces, and the gear
-          we actually recommend. Tap any item to view it on eBay.
+          New apparel, pre-owned finds, and gear for the river — new and vintage.
         </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="golf.html">Shop Golf</a>
-          <a class="btn btn-ghost" href="fishing.html">Shop Fly Fishing</a>
-        </div>
       </div>
     </section>
 
-    <!-- FEATURED LISTINGS (rendered from the catalog sheet) -->
-    <section id="listings" class="store-section">
+    <!-- NEW APPAREL (affiliate) -->
+    <section class="store-section">
       <div class="section-head">
-        <h2>Featured Listings</h2>
-        <p>A handful of current favorites. Browse everything on the Golf and Fly Fishing pages.</p>
+        <h2>New Apparel</h2>
+        <p>Brand-new apparel we love. Affiliate links — we may earn a commission at no extra cost to you.</p>
       </div>
-
-      <div class="dual-columns">
-        <!-- ===== GOLF (featured) ===== -->
-        <div class="column" id="golf">
-          <h3 class="column-head">Golf</h3>
-          <div class="col-grid"
-               data-listings data-category="Golf" data-featured="true"
-               data-empty="No featured golf pieces yet — check back soon."></div>
-          <div class="column-foot">
-            <a class="btn btn-ghost btn-small" href="golf.html">All golf listings →</a>
-          </div>
-        </div>
-
-        <!-- ===== FLY FISHING (featured) ===== -->
-        <div class="column" id="fishing">
-          <h3 class="column-head">Fly Fishing</h3>
-          <div class="col-grid"
-               data-listings data-category="Fly Fishing" data-featured="true"
-               data-empty="No featured fly fishing pieces yet — check back soon."></div>
-          <div class="column-foot">
-            <a class="btn btn-ghost btn-small" href="fishing.html">All fly fishing listings →</a>
-          </div>
-        </div>
-      </div>
-
-      <p class="disclosure">
-        Some items are affiliate links — we may earn a commission at no extra cost to you.
-      </p>
+      <div class="product-grid"
+           data-listings data-category="Fly Fishing" data-subcategory="New Apparel"
+           data-empty="No new apparel listed yet — check back soon."></div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
-      <h2>About FishAnneChips</h2>
-      <p>
-        FishAnneChips is a small shop for the women who love the golf course and
-        the riverbank alike. We hunt down quality new gear, one-of-a-kind vintage
-        finds, and the apparel and accessories we'd actually carry ourselves —
-        then point you straight to the listing to grab it.
-      </p>
+    <!-- PRE-OWNED APPAREL -->
+    <section class="store-section alt">
+      <div class="section-head">
+        <h2>Pre-owned Apparel</h2>
+        <p>Gently used and ready for the river.</p>
+      </div>
+      <div class="product-grid"
+           data-listings data-category="Fly Fishing" data-subcategory="Pre-owned Apparel"
+           data-empty="No pre-owned apparel listed yet — check back soon."></div>
+    </section>
+
+    <!-- GEAR (affiliate) -->
+    <section class="store-section">
+      <div class="section-head">
+        <h2>Gear</h2>
+        <p>New gear we recommend. Affiliate links — we may earn a commission at no extra cost to you.</p>
+      </div>
+      <div class="product-grid"
+           data-listings data-category="Fly Fishing" data-subcategory="Gear"
+           data-empty="No gear listed yet — check back soon."></div>
+    </section>
+
+    <!-- VINTAGE GEAR -->
+    <section class="store-section alt">
+      <div class="section-head">
+        <h2>Vintage Gear</h2>
+        <p>One-of-a-kind vintage finds.</p>
+      </div>
+      <div class="product-grid"
+           data-listings data-category="Fly Fishing" data-subcategory="Vintage Gear"
+           data-empty="No vintage gear listed yet — check back soon."></div>
     </section>
   </main>
 
