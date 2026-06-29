@@ -1,4 +1,4 @@
-// Balconé Holdings — small enhancements
+// FishAnneChips — small enhancements
 
 // Auto-update footer year
 document.querySelectorAll('#year').forEach(function (el) {
@@ -10,6 +10,12 @@ document.querySelectorAll('[data-placeholder]').forEach(function (el) {
   el.addEventListener('click', function (e) {
     if (el.getAttribute('href') === '#' || !el.getAttribute('href')) {
       e.preventDefault();
+      // Icon links (e.g. social icons): just pulse — don't clobber the SVG with text
+      if (el.querySelector('svg')) {
+        el.classList.add('is-pending');
+        setTimeout(function () { el.classList.remove('is-pending'); }, 1000);
+        return;
+      }
       el.classList.add('is-pending');
       const original = el.textContent;
       el.textContent = 'Link coming soon';
