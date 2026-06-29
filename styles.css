@@ -333,6 +333,13 @@ a.product-img { text-decoration: none; }
 .product-condition.affiliate { color: var(--ink); }
 
 .product h3 { font-size: 1.05rem; font-weight: 500; }
+.product-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  margin: 2px 0 4px;
+}
 .product-price { font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .product .btn { margin-top: auto; text-align: center; }
 

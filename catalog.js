@@ -64,7 +64,8 @@
         iSub = head.indexOf('Subcategory'),
         iTit = head.indexOf('Title'),
         iImg = head.indexOf('Image URL'),
-        iLink = head.indexOf('Listing URL');
+        iLink = head.indexOf('Listing URL'),
+        iNote = head.indexOf('Note');
     var out = [];
     for (var r = 1; r < rows.length; r++) {
       var row = rows[r];
@@ -75,7 +76,8 @@
         subcategory: trim(row[iSub]),
         title: trim(row[iTit]),
         image: trim(row[iImg]),
-        link: trim(row[iLink])
+        link: trim(row[iLink]),
+        note: trim(row[iNote])
       };
       // Only show active rows that at least have a title + category.
       if (item.active && item.title && item.category) out.push(item);
@@ -87,8 +89,10 @@
     var aff = isAffiliate(item.subcategory);
     var rel = aff ? 'sponsored noopener' : 'noopener';
     var tag = SUB_TAG[subKey(item.subcategory)] || item.subcategory || 'Item';
+    var label = aff ? 'Shop this →' : 'View on eBay →';
     var hasImg = !!item.image;
     var hasLink = !!item.link;
+    var note = item.note ? '<p class="product-note">' + esc(item.note) + '</p>' : '';
 
     var imgInner = hasImg
       ? '<img src="' + esc(item.image) + '" alt="' + esc(item.title) + '" loading="lazy" />'
@@ -100,13 +104,14 @@
 
     var btn = hasLink
       ? '<a class="btn btn-small btn-primary" href="' + esc(item.link) +
-        '" target="_blank" rel="' + rel + '">View on eBay →</a>'
+        '" target="_blank" rel="' + rel + '">' + label + '</a>'
       : '<a class="btn btn-small btn-primary" href="#" data-placeholder>Listing coming soon</a>';
 
     return '<article class="product">' + imgEl +
       '<div class="product-body">' +
         '<span class="product-condition' + (aff ? ' affiliate' : '') + '">' + esc(tag) + '</span>' +
         '<h3>' + esc(item.title) + '</h3>' +
+        note +
         btn +
       '</div></article>';
   }
