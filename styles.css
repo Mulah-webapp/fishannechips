@@ -333,6 +333,7 @@ a.product-img { text-decoration: none; }
 .product-condition.affiliate { color: var(--ink); }
 
 .product h3 { font-size: 1.05rem; font-weight: 500; }
+.aff-mark { color: var(--ink-soft); font-weight: 600; margin-left: 1px; }
 .product-note {
   font-size: 0.85rem;
   font-style: italic;

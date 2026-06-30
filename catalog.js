@@ -11,8 +11,9 @@
   var CSV_URL =
     'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv';
 
-  // Subcategories that are affiliate (get rel="sponsored" + disclosure)
-  var AFFILIATE_SUBS = ['new apparel', 'gear'];
+  // Subcategories that link out to brands (button reads "Shop this" vs "View on eBay").
+  // Whether a given item is an *affiliate* link is a per-row flag (Affiliate column).
+  var NEW_SECTIONS = ['new apparel', 'gear'];
   var SUB_TAG = {
     'new apparel': 'New',
     'pre-owned apparel': 'Pre-owned',
@@ -32,7 +33,7 @@
   // Normalize for matching — forgive the "apperal" typo, casing, and spacing.
   function subKey(s) { return lc(s).replace(/apperal/g, 'apparel').replace(/\s+/g, ' '); }
   function catKey(s) { return lc(s).replace(/\s+/g, ' '); }
-  function isAffiliate(sub) { return AFFILIATE_SUBS.indexOf(subKey(sub)) !== -1; }
+  function isNewSection(sub) { return NEW_SECTIONS.indexOf(subKey(sub)) !== -1; }
 
   // Minimal RFC-4180 CSV parser (handles quotes, commas + newlines in fields).
   function parseCSV(text) {
@@ -65,7 +66,8 @@
         iTit = head.indexOf('Title'),
         iImg = head.indexOf('Image URL'),
         iLink = head.indexOf('Listing URL'),
-        iNote = head.indexOf('Note');
+        iNote = head.indexOf('Note'),
+        iAff = head.indexOf('Affiliate');
     var out = [];
     for (var r = 1; r < rows.length; r++) {
       var row = rows[r];
@@ -77,7 +79,8 @@
         title: trim(row[iTit]),
         image: trim(row[iImg]),
         link: trim(row[iLink]),
-        note: trim(row[iNote])
+        note: trim(row[iNote]),
+        affiliate: truthy(row[iAff])
       };
       // Only show active rows that at least have a title + category.
       if (item.active && item.title && item.category) out.push(item);
@@ -86,10 +89,11 @@
   }
 
   function cardHTML(item) {
-    var aff = isAffiliate(item.subcategory);
+    var aff = item.affiliate;
     var rel = aff ? 'sponsored noopener' : 'noopener';
     var tag = SUB_TAG[subKey(item.subcategory)] || item.subcategory || 'Item';
-    var label = aff ? 'Shop this →' : 'View on eBay →';
+    var label = isNewSection(item.subcategory) ? 'Shop this →' : 'View on eBay →';
+    var astk = aff ? '<sup class="aff-mark" title="Affiliate link">*</sup>' : '';
     var hasImg = !!item.image;
     var hasLink = !!item.link;
     var note = item.note ? '<p class="product-note">' + esc(item.note) + '</p>' : '';
@@ -109,8 +113,8 @@
 
     return '<article class="product">' + imgEl +
       '<div class="product-body">' +
-        '<span class="product-condition' + (aff ? ' affiliate' : '') + '">' + esc(tag) + '</span>' +
-        '<h3>' + esc(item.title) + '</h3>' +
+        '<span class="product-condition">' + esc(tag) + '</span>' +
+        '<h3>' + esc(item.title) + astk + '</h3>' +
         note +
         btn +
       '</div></article>';
